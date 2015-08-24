@@ -1,44 +1,48 @@
 <html>
 <head>
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="iterator.js"></script>
-	<script>
-		
-		// load everything up and allow for use
-		$( document ).ready(function() {
-			
-			var array = $.trim($(".section").first().text()).split(" ");
-
-			var iterator = new Iterator(array);
-    		$("#hasNext").click(function() { $("#result").text(iterator.hasNext());});
-    		$("#next").click(function() { $("#result").text(iterator.next());});
-    		$("#current").click(function() { $("#result").text(iterator.current());});
-    		$("#tag").click(function() { 
-    			//assign returned function from tag to showTag button click event
-    			var clickEvent = iterator.tag(iterator.current());
-    			$("#showTag").click(function() { $("#result").text(clickEvent);});
-    			$("#result").text("tagged");
-    		});
-    		$("#reverse").click(function() { iterator.reverse();$("#result").text("reversed");});
-		});
-	</script>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">	
+<title>JS Exercise: Iterator</title>
 </head>
 <body>
-<div class="section">
-   1 2 3 4 5 6
-</div>
-<div class="section">
-   6 5 4 3 2 1
-</div>
-<div>
-	<br><br>
-	<label>Operation Result: </label><label id="result"></label><br><br>
-	<input id="hasNext" type="button" value="hasNext"></input>
-	<input id="next" type="button" value="next"></input>
-	<input id="current" type="button" value="current"></input>
-	<input id="tag" type="button" value="tag"></input>
-	<input id="showTag" type="button" value="show tag"></input>
-	<input id="reverse" type="button" value="reverse"></input>
+	<div class="container">
+	<div class="section">
+	   1 2 3 4 5 6
+	</div>
+	<div class="section">
+	   6 5 4 3 2 1
+	</div>
+	<div>
+		<br><br>
+		<label >Operation Result: </label>&nbsp;<label id="result"></label><br><br>
+		<button id="hasNext" type="button" value="hasNext" class="btn btn-info">hasNext()</button>
+		<button id="next" type="button" value="next" class="btn btn-primary">next()</button>
+		<button id="current" type="button" value="current" class="btn btn-info">current()</button>
+		<button id="tag" type="button" value="tag" class="btn btn-success">tag()</button>
+		<button id="showTag" type="button" value="show tag" class="btn btn-info">showTag</button>
+		<button id="reverse" type="button" value="reverse" class="btn btn-warning">reverse()</button>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="iterator.js"></script>
+		<script>
+			
+			// load everything up and allow for use
+			$( document ).ready(function() {
+				
+				var array = $.trim($(".section").first().text()).split(" ");
+
+				var iterator = new Iterator(array);
+	    		$("#hasNext").click(function() { $("#result").text(iterator.hasNext());});
+	    		$("#next").click(function() { $("#result").text(iterator.next());});
+	    		$("#current").click(function() { $("#result").text(iterator.current());});
+	    		$("#tag").click(function() { 
+	    			//assign returned function from tag to showTag button click event
+	    			var clickEvent = iterator.tag(iterator.current());
+	    			$("#showTag").click(function() { $("#result").text(clickEvent);});
+	    			$("#result").text("tagged");
+	    		});
+	    		$("#reverse").click(function() { iterator.reverse();$("#result").text("reversed");});
+			});
+		</script>
+	</div>
 </body>
 </html>
